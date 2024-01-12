@@ -25,7 +25,7 @@ public class AjaxForm extends Base {
 	}
 
 	@Test(priority = 1)
-	void verifyRedBorderIsDisplayed_whenSubmitIsClickedWithEmptyName() {
+	public void verifyRedBorderIsDisplayed_whenSubmitIsClickedWithEmptyName() {
 
 		String expectedStyle = "border: 1px solid rgb(255, 0, 0);";
 		String actualStyle = ajaxFormPage.getStyleOfEmptyNameField();
@@ -39,7 +39,7 @@ public class AjaxForm extends Base {
 	}
 
 	@Test(priority = 2)
-	void verifyAjaxProcessingMessageIsDisplayed_whenSubmitIsClickedWithData() {
+	public void verifyAjaxProcessingMessageIsDisplayed_whenSubmitIsClickedWithData() {
 
 		ajaxFormPage.enterName("test");
 		ajaxFormPage.enterMessage("test message");

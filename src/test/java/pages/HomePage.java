@@ -16,8 +16,16 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement ajaxFormLink;
 
+	@FindBy(linkText = "Auto Healing")
+	@CacheLookup
+	private WebElement autoHealingLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
+	}
+
+	public void navigateToAutoHealingPage() {
+		autoHealingLink.click();
 	}
 
 	public HomePage(WebDriver driver) {
