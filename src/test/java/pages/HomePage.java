@@ -20,12 +20,20 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement autoHealingLink;
 
+	@FindBy(linkText = "Broken Image")
+	@CacheLookup
+	private WebElement brokenImageLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
 
 	public void navigateToAutoHealingPage() {
 		autoHealingLink.click();
+	}
+
+	public void navigateToBrokenImageLinkPage() {
+		brokenImageLink.click();
 	}
 
 	public HomePage(WebDriver driver) {

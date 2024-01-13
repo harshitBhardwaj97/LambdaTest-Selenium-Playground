@@ -45,7 +45,7 @@ public class AjaxForm extends Base {
 		ajaxFormPage.enterMessage("test message");
 		ajaxFormPage.clickOnSubmitButton();
 
-		// Red border is added
+		// Processing Message is Displayed
 		Assert.assertEquals(ajaxFormPage.checkSubmitControlDivContent(), true);
 
 	}

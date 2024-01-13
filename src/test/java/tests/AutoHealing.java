@@ -43,7 +43,7 @@ public class AutoHealing extends Base {
 		autoHealingPage.enterPassword("Password");
 
 		String initialDOMId = autoHealingPage.checkUserNameDomId();
-		System.out.println(initialDOMId);
+		System.out.println("initialDOMId -> " + initialDOMId);
 
 		// Check initalDOMId
 		Assert.assertEquals(initialDOMId, "username");
@@ -51,10 +51,10 @@ public class AutoHealing extends Base {
 		autoHealingPage.clickOnChangeDOMIDButton();
 
 		String finalDOMId = autoHealingPage.checkUserNameDomId();
-		System.out.println(finalDOMId);
+		System.out.println("finalDOMId -> " + finalDOMId);
 
 		// Check finalDOMId
-		Assert.assertEquals(initialDOMId, "username");
+		Assert.assertEquals(finalDOMId, "lambdatest");
 
 	}
 
