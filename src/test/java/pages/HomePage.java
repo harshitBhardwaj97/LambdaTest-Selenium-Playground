@@ -24,6 +24,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement brokenImageLink;
 
+	@FindBy(linkText = "Checkbox Demo")
+	@CacheLookup
+	private WebElement checkBoxDemoLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
@@ -34,6 +38,10 @@ public class HomePage extends Base {
 
 	public void navigateToBrokenImageLinkPage() {
 		brokenImageLink.click();
+	}
+
+	public void navigateToCheckBoxDemoPage() {
+		checkBoxDemoLink.click();
 	}
 
 	public HomePage(WebDriver driver) {
