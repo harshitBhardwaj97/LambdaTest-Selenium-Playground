@@ -51,13 +51,13 @@ public class UploadFile extends Base {
 
 	@Test(priority = 2)
 	public void verifyJPEGFileIsUploadedSuccessfully() {
-		String jpgFilePath = Base.uploadDirectory + "\\lamdatest-logo.jpeg";
+		String jpegFilePath = Base.uploadDirectory + "\\lamdatest-logo.jpeg";
 
 		// As of now no message should be displayed
 		Assert.assertEquals(uploadFilePage.checkUploadMessageIsDisplayed(), false);
 
 		// Now try uploading the file
-		uploadFilePage.uploadFile(jpgFilePath);
+		uploadFilePage.uploadFile(jpegFilePath);
 
 		// Assert upload status is displayed
 		Assert.assertEquals(uploadFilePage.checkUploadMessageIsDisplayed(), true);
