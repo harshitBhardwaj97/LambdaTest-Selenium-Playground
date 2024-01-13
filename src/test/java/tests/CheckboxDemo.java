@@ -1,8 +1,7 @@
 package tests;
 
-import static org.testng.Assert.assertEquals;
-
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -30,10 +29,10 @@ public class CheckboxDemo extends Base {
 
 		var firstCheckBox = checkboxDemoPage.getFirstCheckBox();
 		boolean isTextDisplayedBefore = checkboxDemoPage.checkFirstCheckBoxTextIsDisplayed();
-		assertEquals(isTextDisplayedBefore, false);
+		Assert.assertEquals(isTextDisplayedBefore, false);
 
 		// Originally check-box should not be selected
-		assertEquals(checkboxDemoPage.checkWhetherCheckBoxIsSelected(firstCheckBox), false);
+		Assert.assertEquals(checkboxDemoPage.checkWhetherCheckBoxIsSelected(firstCheckBox), false);
 
 		// Select the first check-box
 		checkboxDemoPage.selectCheckBox(firstCheckBox);
@@ -42,10 +41,10 @@ public class CheckboxDemo extends Base {
 		boolean isTextDisplayedAfter = checkboxDemoPage.checkFirstCheckBoxTextIsDisplayed();
 
 		// Now it should be displayed
-		assertEquals(isTextDisplayedAfter, true);
+		Assert.assertEquals(isTextDisplayedAfter, true);
 
 		// Now check-box should also be selected
-		assertEquals(checkboxDemoPage.checkWhetherCheckBoxIsSelected(firstCheckBox), true);
+		Assert.assertEquals(checkboxDemoPage.checkWhetherCheckBoxIsSelected(firstCheckBox), true);
 
 	}
 
@@ -59,8 +58,8 @@ public class CheckboxDemo extends Base {
 		boolean isSecondCheckBoxEnabled = checkboxDemoPage.checkWhetherCheckBoxIsDisabled(secondDisabledCheckBox);
 
 		// Assert both check-boxes are disabled or not enabled
-		assertEquals(isFirstCheckBoxEnabled, false);
-		assertEquals(isSecondCheckBoxEnabled, false);
+		Assert.assertEquals(isFirstCheckBoxEnabled, false);
+		Assert.assertEquals(isSecondCheckBoxEnabled, false);
 
 		/*
 		 * Assert both check-boxes cannot be selected, by first clicking on them and
@@ -70,8 +69,8 @@ public class CheckboxDemo extends Base {
 		checkboxDemoPage.selectCheckBox(firstDisabledCheckBox);
 		checkboxDemoPage.selectCheckBox(secondDisabledCheckBox);
 
-		assertEquals(checkboxDemoPage.checkWhetherCheckBoxIsSelected(firstDisabledCheckBox), false);
-		assertEquals(checkboxDemoPage.checkWhetherCheckBoxIsSelected(secondDisabledCheckBox), false);
+		Assert.assertEquals(checkboxDemoPage.checkWhetherCheckBoxIsSelected(firstDisabledCheckBox), false);
+		Assert.assertEquals(checkboxDemoPage.checkWhetherCheckBoxIsSelected(secondDisabledCheckBox), false);
 
 	}
 

@@ -2,6 +2,8 @@ package base;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -17,6 +19,8 @@ public class Base {
 	protected WebDriverWait webDriverWait;
 	static Properties properties;
 	static String dir = System.getProperty("user.dir");
+	public static String downloadsDirectory = dir + "\\src\\test\\resources\\downloads";
+	String baseUrl = "https://www.lambdatest.com/selenium-playground/";
 
 	public Base() {
 		try {
@@ -42,10 +46,14 @@ public class Base {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions chromeOptions = new ChromeOptions();
 			chromeOptions.addArguments("--remote-allow-origins=*");
+			Map<String, Object> prefs = new HashMap<String, Object>();
+			prefs.put("download.default_directory", downloadsDirectory);
+			chromeOptions.setExperimentalOption("prefs", prefs);
+			chromeOptions.addArguments("disable-popup-blocking");
 			driver = new ChromeDriver(chromeOptions);
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();
-			driver.get("https://www.lambdatest.com/selenium-playground/");
+			driver.get(baseUrl);
 			return driver;
 
 		default:
