@@ -44,6 +44,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement simpleFormDemoLink;
 
+	@FindBy(linkText = "Redirection")
+	@CacheLookup
+	private WebElement redirectionLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
@@ -74,6 +78,10 @@ public class HomePage extends Base {
 
 	public void navigateToSimpleFormDemoPage() {
 		simpleFormDemoLink.click();
+	}
+
+	public void navigateToRedirectionPage() {
+		redirectionLink.click();
 	}
 
 	public HomePage(WebDriver driver) {
