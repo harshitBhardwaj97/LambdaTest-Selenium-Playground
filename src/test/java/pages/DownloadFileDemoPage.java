@@ -21,6 +21,8 @@ public class DownloadFileDemoPage extends Base {
 	public boolean isFileDownloaded(String downloadPath, String fileName) {
 		File downloadsDirectory = new File(downloadPath);
 
+		cleanDownloadDirectory(downloadPath);
+
 		/*
 		 * Wait for a reasonable amount of time before checking for files
 		 */
@@ -52,6 +54,23 @@ public class DownloadFileDemoPage extends Base {
 
 		// If the loop completes without finding the file, return false
 		return false;
+	}
+
+	// Delete all files in beginning
+	private void cleanDownloadDirectory(String downloadPath) {
+		File downloadsDirectory = new File(downloadPath);
+
+		if (downloadsDirectory.exists() && downloadsDirectory.isDirectory()) {
+			File[] files = downloadsDirectory.listFiles();
+
+			if (files != null) {
+				for (File file : files) {
+					if (file.isFile()) {
+						file.delete();
+					}
+				}
+			}
+		}
 	}
 
 	public DownloadFileDemoPage(WebDriver driver) {
