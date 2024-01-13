@@ -36,74 +36,9 @@ public class FileDownloadPage extends Base {
 		return downloadLink.isDisplayed();
 	}
 
-//	public boolean isFileDownloadedAndHasCorrectContent(String downloadPath, String fileName, String fileContent) {
-//		File downloadsDirectory = new File(downloadPath);
-//
-//		/*
-//		 * Wait for a reasonable amount of time before checking for files
-//		 */
-//		long endTime = System.currentTimeMillis() + 15_000;
-//
-//		while (System.currentTimeMillis() < endTime) {
-//
-//			File[] dirContents = downloadsDirectory.listFiles();
-//
-//			if (dirContents != null) {
-//				for (File file : dirContents) {
-//					System.out.println(file.getName());
-//					if (file.getName().equals(fileName)) {
-//
-//						// Before deleting the file, check for the file contents
-//						if (matchFileContent(fileContent, file)) {
-//							System.out.println(
-//									"File has been found successfully, and content also matches now deleting it.");
-//							// File has been found, and content also matches it can now be deleted:
-//							file.delete();
-//							return true;
-//						}
-//
-//					}
-//					file.delete(); // Delete the file whether the message matches or not
-//				}
-//
-//			}
-//
-//			// Sleep for a short duration before checking again
-//			try {
-//				Thread.sleep(1000); // 1 second
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//
-//		// If the loop completes without finding the file, return false
-//		return false;
-//	}
-//
-//	public boolean matchFileContent(String fileContent, File fileToRead) {
-//
-//		List<String> lines;
-//		try {
-//			lines = FileUtils.readLines(fileToRead);
-//			String[] lineArray = lines.stream().toArray(String[]::new);
-//
-//			for (String s : lineArray) {
-//				System.out.println(s);
-//				if (s.equals(fileContent))
-//					return true;
-//			}
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		return false;
-//	}
 	public boolean verifyFileIsDownloadedAndItsContentMatches(String downloadPath, String fileName,
 			String expectedContent) {
 		File downloadsDirectory = new File(downloadPath);
-
-		cleanDownloadDirectory(downloadPath);
 
 		/*
 		 * Wait for a reasonable amount of time before checking for files
@@ -162,23 +97,6 @@ public class FileDownloadPage extends Base {
 			e.printStackTrace();
 		}
 		return content.toString();
-	}
-
-	// Delete all files in beginning
-	private void cleanDownloadDirectory(String downloadPath) {
-		File downloadsDirectory = new File(downloadPath);
-
-		if (downloadsDirectory.exists() && downloadsDirectory.isDirectory()) {
-			File[] files = downloadsDirectory.listFiles();
-
-			if (files != null) {
-				for (File file : files) {
-					if (file.isFile()) {
-						file.delete();
-					}
-				}
-			}
-		}
 	}
 
 	public FileDownloadPage(WebDriver driver) {

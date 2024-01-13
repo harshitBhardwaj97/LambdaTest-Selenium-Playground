@@ -36,6 +36,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement fileDownloadLink;
 
+	@FindBy(linkText = "Upload File Demo")
+	@CacheLookup
+	private WebElement uploadFileLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
@@ -58,6 +62,10 @@ public class HomePage extends Base {
 
 	public void navigateToFileDownloadPage() {
 		fileDownloadLink.click();
+	}
+
+	public void navigateToUploadFilePage() {
+		uploadFileLink.click();
 	}
 
 	public HomePage(WebDriver driver) {

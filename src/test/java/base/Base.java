@@ -20,6 +20,7 @@ public class Base {
 	static Properties properties;
 	static String dir = System.getProperty("user.dir");
 	public static String downloadsDirectory = dir + "\\src\\test\\resources\\downloads";
+	public static String uploadDirectory = dir + "\\src\\test\\resources\\uploads";
 	String baseUrl = "https://www.lambdatest.com/selenium-playground/";
 
 	public Base() {
