@@ -21,7 +21,6 @@ public class JavascriptAlertsPage extends Base {
 	Alert promptBoxAlert;
 	WebDriverWait wait;
 
-	// I am an alert box!
 	@FindBy(xpath = "//div[@class='w-full']/div[1]/p/button")
 	private WebElement regularAlertButton;
 

@@ -52,6 +52,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement javascriptAlertsLink;
 
+	@FindBy(linkText = "Key Press")
+	@CacheLookup
+	private WebElement keyPressLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
@@ -90,6 +94,10 @@ public class HomePage extends Base {
 
 	public void navigateToJavscriptAlertsPage() {
 		javascriptAlertsLink.click();
+	}
+
+	public void navigateToKeyPressPage() {
+		keyPressLink.click();
 	}
 
 	public HomePage(WebDriver driver) {
