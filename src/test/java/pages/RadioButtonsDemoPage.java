@@ -19,7 +19,7 @@ public class RadioButtonsDemoPage extends Base {
 	@FindBy(xpath = "//input[@value='Female' and @name='optradio']")
 	private WebElement firstFemaleRadioButton;
 
-	@FindBy(xpath = "// input[@value='RadioButton3']")
+	@FindBy(xpath = "//input[@value='RadioButton3']")
 	private WebElement disabledRadioButton;
 
 	@FindBy(id = "buttoncheck")

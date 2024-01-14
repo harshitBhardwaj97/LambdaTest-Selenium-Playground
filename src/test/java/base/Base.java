@@ -41,23 +41,41 @@ public class Base {
 
 	public WebDriver initializeDriver() {
 
-		String browserName = properties.getProperty("browser");
-		switch (browserName.toLowerCase()) {
-		case "chrome":
-			WebDriverManager.chromedriver().setup();
-			ChromeOptions chromeOptions = new ChromeOptions();
-			chromeOptions.addArguments("--remote-allow-origins=*");
-			Map<String, Object> prefs = new HashMap<String, Object>();
-			prefs.put("download.default_directory", downloadsDirectory);
-			chromeOptions.setExperimentalOption("prefs", prefs);
-			chromeOptions.addArguments("disable-popup-blocking");
-			driver = new ChromeDriver(chromeOptions);
-			driver.manage().window().maximize();
-			driver.manage().deleteAllCookies();
-			driver.get(baseUrl);
-			return driver;
+		/*
+		 * By default, Chrome will be considered as the browser, hence chromeOptions are
+		 * defined here once
+		 */
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--remote-allow-origins=*");
+		Map<String, Object> prefs = new HashMap<String, Object>();
+		prefs.put("download.default_directory", downloadsDirectory);
+		chromeOptions.setExperimentalOption("prefs", prefs);
+		chromeOptions.addArguments("disable-popup-blocking");
 
-		default:
+		try {
+			String browserName = properties.getProperty("browser");
+			switch (browserName.toLowerCase()) {
+			case "chrome":
+				WebDriverManager.chromedriver().setup();
+				driver = new ChromeDriver(chromeOptions);
+				driver.manage().window().maximize();
+				driver.manage().deleteAllCookies();
+				driver.get(baseUrl);
+				return driver;
+
+			default:
+				WebDriverManager.chromedriver().setup();
+				driver = new ChromeDriver(chromeOptions);
+				driver.manage().window().maximize();
+				driver.manage().deleteAllCookies();
+				driver.get(baseUrl);
+				return driver;
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			System.out.println("Please make sure browser property is passed in config.properties.");
 			return null;
 		}
 
