@@ -60,6 +60,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement radioButtonsDemoLink;
 
+	@FindBy(linkText = "Table Filter")
+	@CacheLookup
+	private WebElement tableFilterLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
@@ -106,6 +110,10 @@ public class HomePage extends Base {
 
 	public void navigateToRadioButtonsDemoPage() {
 		radioButtonsDemoLink.click();
+	}
+
+	public void navigateToTableFilterPage() {
+		tableFilterLink.click();
 	}
 
 	public HomePage(WebDriver driver) {
