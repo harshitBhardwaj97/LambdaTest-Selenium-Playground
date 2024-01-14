@@ -48,6 +48,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement redirectionLink;
 
+	@FindBy(linkText = "Javascript Alerts")
+	@CacheLookup
+	private WebElement javascriptAlertsLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
@@ -82,6 +86,10 @@ public class HomePage extends Base {
 
 	public void navigateToRedirectionPage() {
 		redirectionLink.click();
+	}
+
+	public void navigateToJavscriptAlertsPage() {
+		javascriptAlertsLink.click();
 	}
 
 	public HomePage(WebDriver driver) {
