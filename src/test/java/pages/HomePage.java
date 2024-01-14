@@ -56,6 +56,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement keyPressLink;
 
+	@FindBy(linkText = "Radio Buttons Demo")
+	@CacheLookup
+	private WebElement radioButtonsDemoLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
@@ -98,6 +102,10 @@ public class HomePage extends Base {
 
 	public void navigateToKeyPressPage() {
 		keyPressLink.click();
+	}
+
+	public void navigateToRadioButtonsDemoPage() {
+		radioButtonsDemoLink.click();
 	}
 
 	public HomePage(WebDriver driver) {
