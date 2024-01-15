@@ -34,10 +34,6 @@ public class TableFilterPage extends Base {
 	@FindBy(xpath = "//tr/td/div/div/h4")
 	private List<WebElement> rowHeadings;
 
-//	public String getCombinedGenderValueText() {
-//		return genderText.getText();
-//	}
-
 	public void clickOnHyperExecuteFilter() {
 		hyperExecuteFilter.click();
 	}

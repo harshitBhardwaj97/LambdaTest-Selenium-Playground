@@ -64,6 +64,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement tableFilterLink;
 
+	@FindBy(linkText = "Input Form Submit")
+	@CacheLookup
+	private WebElement inputFormSubmitLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
@@ -114,6 +118,10 @@ public class HomePage extends Base {
 
 	public void navigateToTableFilterPage() {
 		tableFilterLink.click();
+	}
+
+	public void navigateToInputFormSubmitPage() {
+		inputFormSubmitLink.click();
 	}
 
 	public HomePage(WebDriver driver) {

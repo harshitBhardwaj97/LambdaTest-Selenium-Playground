@@ -99,8 +99,8 @@ public class RadioButtonsDemo extends Base {
 				Assert.assertEquals(genderButton.getText(), radioButtonsDemoPage.getCombinedGenderValueText());
 
 				/*
-				 * Assert that gender values match after clicking on get Values, but first
-				 * replace ' to ' with ' - '
+				 * Assert that age values match after clicking on get Values, but first replace
+				 * ' to ' with ' - '
 				 */
 				Assert.assertEquals(ageGroupButton.getText(),
 						radioButtonsDemoPage.getCombinedAgeValueText().replaceAll(" - ", " to "));
