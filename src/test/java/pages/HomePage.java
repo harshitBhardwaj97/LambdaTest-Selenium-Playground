@@ -76,6 +76,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement contextMenuLink;
 
+	@FindBy(linkText = "Drag and Drop")
+	@CacheLookup
+	private WebElement dragAndDropLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
@@ -138,6 +142,10 @@ public class HomePage extends Base {
 
 	public void navigateToContextMenuPage() {
 		contextMenuLink.click();
+	}
+
+	public void navigateToDragAndDropDemoPage() {
+		dragAndDropLink.click();
 	}
 
 	public HomePage(WebDriver driver) {
