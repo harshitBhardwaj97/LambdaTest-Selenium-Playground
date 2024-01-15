@@ -72,6 +72,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement selectDropdownLink;
 
+	@FindBy(linkText = "Context Menu")
+	@CacheLookup
+	private WebElement contextMenuLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
@@ -130,6 +134,10 @@ public class HomePage extends Base {
 
 	public void navigateToSelectDropdownDemoPage() {
 		selectDropdownLink.click();
+	}
+
+	public void navigateToContextMenuPage() {
+		contextMenuLink.click();
 	}
 
 	public HomePage(WebDriver driver) {

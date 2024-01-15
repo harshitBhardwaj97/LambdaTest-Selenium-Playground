@@ -29,7 +29,7 @@ public class SelectDropdownDemo extends Base {
 	}
 
 	@Test(priority = 1)
-	public void verifySingleSelectFunctionality() throws InterruptedException {
+	public void verifySingleSelectFunctionality() {
 
 		/*
 		 * In this will add each day at last and then check the message, for example :
@@ -46,8 +46,6 @@ public class SelectDropdownDemo extends Base {
 		for (String day : dayOptionNames) {
 			expectedMessage = "Day selected :- " + day;
 			selectDropdownDemoPage.selectDayOption(day);
-
-			Thread.sleep(100);
 
 			// Now the message should be displayed
 			Assert.assertTrue(selectDropdownDemoPage.checkFirstSelectMessageIsDisplayed());
