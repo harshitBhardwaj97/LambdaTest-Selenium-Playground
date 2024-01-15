@@ -10,8 +10,6 @@ import base.Base;
 
 public class AjaxFormPage extends Base {
 
-	WebDriver driver;
-
 	@FindBy(id = "title")
 	@CacheLookup
 	private WebElement nameInput;

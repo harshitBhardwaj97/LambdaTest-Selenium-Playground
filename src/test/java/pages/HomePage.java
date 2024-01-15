@@ -68,6 +68,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement inputFormSubmitLink;
 
+	@FindBy(linkText = "Select Dropdown List")
+	@CacheLookup
+	private WebElement selectDropdownLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
@@ -122,6 +126,10 @@ public class HomePage extends Base {
 
 	public void navigateToInputFormSubmitPage() {
 		inputFormSubmitLink.click();
+	}
+
+	public void navigateToSelectDropdownDemoPage() {
+		selectDropdownLink.click();
 	}
 
 	public HomePage(WebDriver driver) {
