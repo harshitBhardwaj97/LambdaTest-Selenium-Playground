@@ -80,6 +80,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement dragAndDropLink;
 
+	@FindBy(linkText = "Data List Filter")
+	@CacheLookup
+	private WebElement dataListFilterLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
@@ -146,6 +150,10 @@ public class HomePage extends Base {
 
 	public void navigateToDragAndDropDemoPage() {
 		dragAndDropLink.click();
+	}
+
+	public void navigateToDataListFilterPage() {
+		dataListFilterLink.click();
 	}
 
 	public HomePage(WebDriver driver) {
