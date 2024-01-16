@@ -84,6 +84,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement dragAndDropLink;
 
+	@FindBy(linkText = "Drag & Drop Sliders")
+	@CacheLookup
+	private WebElement dragAndDropSlidersLink;
+
 	@FindBy(linkText = "Data List Filter")
 	@CacheLookup
 	private WebElement dataListFilterLink;
@@ -158,6 +162,10 @@ public class HomePage extends Base {
 
 	public void navigateToDragAndDropDemoPage() {
 		dragAndDropLink.click();
+	}
+
+	public void navigateToDragAndDropSlidersPage() {
+		dragAndDropSlidersLink.click();
 	}
 
 	public void navigateToDataListFilterPage() {

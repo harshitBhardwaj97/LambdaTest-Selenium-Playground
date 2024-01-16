@@ -112,8 +112,8 @@ public class BootstrapListBox extends Base {
 		bootstrapListBoxPage.clickOnTransferButton(transferToLeftBoxButton);
 		leftBoxItemsLength = bootstrapListBoxPage.getLengthOfLeftListDisplayedItems();
 		rightBoxItemsLength = bootstrapListBoxPage.getLengthOfRightListDisplayedItems();
-		Assert.assertEquals(leftBoxItemsLength, 5); // Is decreased by one
-		Assert.assertEquals(rightBoxItemsLength, 1); // Is increased by one
+		Assert.assertEquals(leftBoxItemsLength, 5); // Is increased by one
+		Assert.assertEquals(rightBoxItemsLength, 1); // Is decreased by one
 
 		/*
 		 * Verify correct strings are displayed, when searched in both the lists
@@ -129,6 +129,7 @@ public class BootstrapListBox extends Base {
 		rightBoxItemsLength = bootstrapListBoxPage.getLengthOfRightListDisplayedItems();
 		// Zero because it has been transferred to right box
 		Assert.assertEquals(rightBoxItemsLength, 0);
+		// Item text is not found in right list
 		Assert.assertFalse(bootstrapListBoxPage.checkTheItemIsPresentInRightList(ITEM_TWO_TO_TRANSFER));
 
 		/*
