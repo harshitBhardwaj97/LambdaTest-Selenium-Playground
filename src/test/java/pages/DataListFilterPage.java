@@ -21,7 +21,6 @@ public class DataListFilterPage extends Base {
 	private WebElement searchResultContainer;
 
 	@FindBy(xpath = "//div[contains(@class,'searchable-container')]/div")
-	@CacheLookup
 	private List<WebElement> searchItems;
 
 	public int getDisplayedSearchContainerItemsCount() {

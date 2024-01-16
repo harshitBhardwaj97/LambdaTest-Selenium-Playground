@@ -20,6 +20,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement autoHealingLink;
 
+	@FindBy(linkText = "Bootstrap List Box")
+	@CacheLookup
+	private WebElement bootstrapListBoxLink;
+
 	@FindBy(linkText = "Broken Image")
 	@CacheLookup
 	private WebElement brokenImageLink;
@@ -90,6 +94,10 @@ public class HomePage extends Base {
 
 	public void navigateToAutoHealingPage() {
 		autoHealingLink.click();
+	}
+
+	public void navigateToBootstrapListBoxPage() {
+		bootstrapListBoxLink.click();
 	}
 
 	public void navigateToBrokenImageLinkPage() {
