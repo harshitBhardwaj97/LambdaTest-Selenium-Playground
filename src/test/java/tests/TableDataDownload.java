@@ -91,6 +91,25 @@ public class TableDataDownload extends Base {
 
 	}
 
+	@Test(priority = 3)
+	public void verifyPDFDownloadFunctionality() {
+
+		/*
+		 * This method attempts to download the PDF File, and then compare its data with
+		 * the present data, which is already defined according to the expected PDF
+		 * file, that is located in the resources directory.
+		 */
+
+		var pdfDownloadButton = tableDataDownloadPage.getPDFDownloadButton();
+
+		tableDataDownloadPage.searchForText("Abraham");
+
+		tableDataDownloadPage.clickButton(pdfDownloadButton);
+
+		Assert.assertTrue(tableDataDownloadPage.checkPDFDownloadFunctionality());
+
+	}
+
 	// Function to get content from the clip-board
 	private String getClipboardContent() {
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();

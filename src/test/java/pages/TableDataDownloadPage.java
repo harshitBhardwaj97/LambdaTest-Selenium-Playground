@@ -11,6 +11,9 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Objects;
 
+import org.apache.pdfbox.Loader;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -40,6 +43,10 @@ public class TableDataDownloadPage extends Base {
 	@CacheLookup
 	private WebElement excelDownloadButton;
 
+	@FindBy(xpath = "//span[.='PDF']")
+	@CacheLookup
+	private WebElement pdfDownloadButton;
+
 	@FindBy(xpath = "//input[@type='search']")
 	@CacheLookup
 	private WebElement searchBox;
@@ -63,6 +70,10 @@ public class TableDataDownloadPage extends Base {
 
 	public WebElement getExcelDownloadButton() {
 		return excelDownloadButton;
+	}
+
+	public WebElement getPDFDownloadButton() {
+		return pdfDownloadButton;
 	}
 
 	/*
@@ -189,6 +200,38 @@ public class TableDataDownloadPage extends Base {
 		return xlsxContentMatches;
 	}
 
+	/*
+	 * Verifies that correct PDF is downloaded, by matching it with expected content
+	 * that is already defined in the resources directory.
+	 */
+	public boolean checkPDFDownloadFunctionality() {
+
+		final String EXPECTED_PDF_CONTENT_PATH = Base.resourcesDirectory + "\\expectedDownloadedPDF.pdf";
+		final String ACTUAL_PDF_CONTENT_PATH = Base.downloadsDirectory
+				+ "\\Selenium Grid Online  Run Selenium Test On Cloud.pdf";
+
+		Path filePath = FileSystems.getDefault().getPath(ACTUAL_PDF_CONTENT_PATH);
+
+		// Wait max for 60 seconds to check XSLX file is downloaded
+		Wait<Path> wait = new FluentWait<>(filePath).withTimeout(Duration.ofSeconds(60))
+				.pollingEvery(Duration.ofSeconds(1)).ignoring(Exception.class);
+
+		wait.until(path -> Files.exists(path));
+
+		boolean pdfContentMatches = true; // Assume it to work properly by default
+
+		try {
+
+			pdfContentMatches = comparePDFFiles(EXPECTED_PDF_CONTENT_PATH, ACTUAL_PDF_CONTENT_PATH);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			pdfContentMatches = false; // In case of exception
+		}
+
+		return pdfContentMatches;
+	}
+
 	// To delete all files in beginning
 	public void cleanDownloadDirectory(String downloadPath) {
 		File downloadsDirectory = new File(downloadPath);
@@ -207,7 +250,7 @@ public class TableDataDownloadPage extends Base {
 	}
 
 	/*
-	 * Helper methods for comparing XLSX file defined here
+	 * Helper methods for comparing XLSX files are defined here
 	 */
 
 	public boolean compareExcelFiles(String filePath1, String filePath2) throws IOException {
@@ -303,6 +346,46 @@ public class TableDataDownloadPage extends Base {
 		default:
 			return null; // Unknown cell type
 		}
+	}
+
+	/*
+	 * Helper methods for comparing PDF files are defined here
+	 */
+
+	public boolean comparePDFFiles(String filePath1, String filePath2) throws IOException {
+		PDDocument document1 = Loader.loadPDF(new File(filePath1));
+		PDDocument document2 = Loader.loadPDF(new File(filePath2));
+
+		try {
+			if (document1.getNumberOfPages() != document2.getNumberOfPages()) {
+				return false; // Different number of pages
+			}
+
+			for (int pageIndex = 0; pageIndex < document1.getNumberOfPages(); pageIndex++) {
+				if (!comparePages(document1, document2, pageIndex)) {
+					return false; // Pages are not equal
+				}
+			}
+
+			return true; // All pages are equal
+		} finally {
+			document1.close();
+			document2.close();
+		}
+	}
+
+	private boolean comparePages(PDDocument document1, PDDocument document2, int pageIndex) throws IOException {
+		PDFTextStripper stripper = new PDFTextStripper();
+		stripper.setStartPage(pageIndex + 1);
+		stripper.setEndPage(pageIndex + 1);
+
+		String textContentOfFirstPdfDoc = stripper.getText(document1);
+		String textContentOfSecondPdfDoc = stripper.getText(document2);
+
+		System.out.println("Text 1 -> " + textContentOfFirstPdfDoc);
+		System.out.println("Text 2 -> " + textContentOfSecondPdfDoc);
+
+		return Objects.equals(textContentOfFirstPdfDoc, textContentOfSecondPdfDoc);
 	}
 
 	public TableDataDownloadPage(WebDriver driver) {
