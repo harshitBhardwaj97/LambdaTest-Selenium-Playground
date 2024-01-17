@@ -91,7 +91,7 @@ public class TableDataDownload extends Base {
 
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 4)
 	public void verifyPDFDownloadFunctionality() {
 
 		/*

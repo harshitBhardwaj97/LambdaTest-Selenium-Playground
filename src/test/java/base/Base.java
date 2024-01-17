@@ -22,6 +22,7 @@ public class Base {
 	public static String downloadsDirectory = dir + "\\src\\test\\resources\\downloads";
 	public static String uploadDirectory = dir + "\\src\\test\\resources\\uploads";
 	public static String resourcesDirectory = dir + "\\src\\test\\resources";
+	public static String testOutput = dir + "\\test-output";
 	String baseUrl = "https://www.lambdatest.com/selenium-playground/";
 
 	public Base() {
