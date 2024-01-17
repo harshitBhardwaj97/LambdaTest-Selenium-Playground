@@ -21,6 +21,7 @@ public class Base {
 	static String dir = System.getProperty("user.dir");
 	public static String downloadsDirectory = dir + "\\src\\test\\resources\\downloads";
 	public static String uploadDirectory = dir + "\\src\\test\\resources\\uploads";
+	public static String resourcesDirectory = dir + "\\src\\test\\resources";
 	String baseUrl = "https://www.lambdatest.com/selenium-playground/";
 
 	public Base() {
@@ -47,6 +48,8 @@ public class Base {
 		 */
 		ChromeOptions chromeOptions = new ChromeOptions();
 		chromeOptions.addArguments("--remote-allow-origins=*");
+		// Uncomment the below line to execute tests in headless mode
+//		chromeOptions.addArguments("--headless");
 		Map<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("download.default_directory", downloadsDirectory);
 		chromeOptions.setExperimentalOption("prefs", prefs);
@@ -73,7 +76,6 @@ public class Base {
 			}
 
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			System.out.println("Please make sure browser property is passed in config.properties.");
 			return null;

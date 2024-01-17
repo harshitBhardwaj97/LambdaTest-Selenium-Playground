@@ -1,0 +1,2 @@
+First Name	Last Name	Gender	Age	Occupation	Experience
+Abraham	Ferguson	Male	19	Fine Artist	1

@@ -96,6 +96,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement iFrameLink;
 
+	@FindBy(linkText = "Table Data Download")
+	@CacheLookup
+	private WebElement tableDataDownloadLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
@@ -178,6 +182,10 @@ public class HomePage extends Base {
 
 	public void navigateToiFrameDemoPage() {
 		iFrameLink.click();
+	}
+
+	public void navigateToTableDataDownloadPage() {
+		tableDataDownloadLink.click();
 	}
 
 	public HomePage(WebDriver driver) {
