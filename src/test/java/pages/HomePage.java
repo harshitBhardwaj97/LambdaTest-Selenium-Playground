@@ -92,6 +92,10 @@ public class HomePage extends Base {
 	@CacheLookup
 	private WebElement dataListFilterLink;
 
+	@FindBy(linkText = "iFrame Demo")
+	@CacheLookup
+	private WebElement iFrameLink;
+
 	public void navigateToAjaxFormPage() {
 		ajaxFormLink.click();
 	}
@@ -170,6 +174,10 @@ public class HomePage extends Base {
 
 	public void navigateToDataListFilterPage() {
 		dataListFilterLink.click();
+	}
+
+	public void navigateToiFrameDemoPage() {
+		iFrameLink.click();
 	}
 
 	public HomePage(WebDriver driver) {
