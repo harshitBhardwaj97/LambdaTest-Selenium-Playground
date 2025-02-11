@@ -1,12 +1,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="AllTestsSuite">
-	<listeners>
-		<listener class-name="listeners.ExtentReportListener"></listener>
-	</listeners>
-	<test name="AllTest">
-		<packages>
-			<package name="tests.*">
-			</package>
-		</packages>
-	</test>
+    <listeners>
+        <listener class-name="com.harshitbhardwaj.listeners.ExtentReportListener"/>
+    </listeners>
+    <test name="AllTest">
+        <packages>
+            <package name="tests.*">
+            </package>
+        </packages>
+        <!--        <classes>-->
+        <!--            <class name="com.harshitbhardwaj.tests.AutoHealingTests"/>-->
+        <!--        </classes>-->
+    </test>
 </suite>
