@@ -5,11 +5,11 @@
     </listeners>
     <test name="AllTest">
         <packages>
-            <package name="tests.*">
+            <package name="com.harshitbhardwaj.tests.*">
             </package>
         </packages>
-        <!--        <classes>-->
-        <!--            <class name="com.harshitbhardwaj.tests.AutoHealingTests"/>-->
-        <!--        </classes>-->
+        <!-- <classes>
+            <class name="com.harshitbhardwaj.tests.AutoHealingTests"/>
+        </classes> -->
     </test>
 </suite>
