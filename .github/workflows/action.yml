@@ -1,0 +1,31 @@
+name: CI/CD Pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+          cache: "maven"
+
+      - name: Install dependencies
+        run: mvn clean install -DskipTests=false
+
+      - name: Run Tests
+        run: mvn test
+
+      # Step 5: Upload ExtentReports from the test-output folder
+      - name: Upload Extent Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: Latest extent report
+          path: test-output/extent-*.html
